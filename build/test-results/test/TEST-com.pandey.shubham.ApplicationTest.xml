@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.pandey.shubham.ApplicationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-09-23T02:40:32" hostname="1mg-lptp-1485.local" time="0.258">
+  <properties/>
+  <testcase name="testRoot" classname="com.pandey.shubham.ApplicationTest" time="0.258"/>
+  <system-out><![CDATA[2021-09-23 08:10:33.026 [Test worker] INFO  ktor.test - Autoreload is disabled because the development mode is off.
+2021-09-23 08:10:33.031 [Test worker] INFO  ktor.test - Application started in 0.037 seconds.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

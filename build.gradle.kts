@@ -7,6 +7,10 @@ plugins {
     kotlin("jvm") version "1.5.31"
 }
 
+application {
+    mainClass.set("io.ktor.server.netty.EngineMain")
+}
+
 group = "com.example"
 version = "0.0.1"
 application {
@@ -15,6 +19,7 @@ application {
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -24,4 +29,11 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:$logback_version")
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlin_version")
+    implementation( "io.ktor:ktor-serialization:$ktor_version")
+
+    implementation( "org.jetbrains.exposed:exposed:0.17.6")
+    implementation("mysql", "mysql-connector-java",  "6.0.6")
+    implementation( "org.slf4j", "slf4j-simple", "1.7.25")
+    implementation("com.google.code.gson", "gson", "2.8.1")
+    implementation(kotlin("stdlib"))
 }
