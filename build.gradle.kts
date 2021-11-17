@@ -1,9 +1,6 @@
 val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
-application {
-    mainClass.set("com.pandey.shubham.Application")
-}
 
 project.setProperty("mainClassName", "com.pandey.shubham.Application")
 
@@ -15,11 +12,15 @@ plugins {
     id("com.google.cloud.tools.appengine") version "2.4.2"
 }
 
-//application {
-//    mainClass.set("io.ktor.server.netty.EngineMain")
-//}
+application {
+    mainClass.set("io.ktor.server.netty.EngineMain")
+}
 
-group = "com.example"
+application {
+    mainClass.set("com.pandey.shubham.Application")
+}
+
+group = "com.pandey.shubham"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -60,4 +61,15 @@ dependencies {
     implementation("io.ktor", "ktor-auth", ktor_version)
     implementation("io.ktor", "ktor-auth-jwt", ktor_version)
     implementation ("com.auth0:java-jwt:3.18.1")
+}
+
+tasks {
+    withType<JavaCompile>().configureEach {
+        options.encoding = "UTF-8"
+    }
+    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+    }
 }
