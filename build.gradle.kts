@@ -30,6 +30,7 @@ repositories {
 appengine {
     stage {
         setArtifact("build/libs/${project.name}-${project.version}-all.jar")
+        setAppEngineDirectory("${project.projectDir}/src/main/appengine")
     }
     deploy {
         version = "GCLOUD_CONFIG"
