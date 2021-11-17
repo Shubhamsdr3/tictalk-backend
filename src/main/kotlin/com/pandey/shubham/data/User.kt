@@ -1,51 +1,36 @@
 package com.pandey.shubham.data
 
-import org.jetbrains.exposed.sql.*
-import org.jetbrains.exposed.sql.transactions.transaction
+import org.ktorm.entity.Entity
+import org.ktorm.schema.Table
+import org.ktorm.schema.boolean
+import org.ktorm.schema.varchar
 
-object User : Table("user") {
-    val userId = integer("user_id")
-    val name = varchar("name", length = 50)
-    val email = varchar("emaild", length = 50)
+object User : Table<UserEntity>("user") {
+    val userId = varchar("userId").primaryKey().bindTo { it.userId }
+    val name = varchar("name").bindTo { it.name }
+    val email = varchar("email").bindTo { it.email }
+    val bio = varchar("bio").bindTo { it.bio }
+    val phoneNumber = varchar("phoneNumber").bindTo { it.phoneNumber }
+    val lastActive = varchar("lastActive").bindTo { it.lastActive }
+    val isOldUser = boolean("isOldUser").bindTo { it.isOldUser }
+    val isOnline = boolean("isOnline").bindTo { it.isOnline }
+    val profileImage = varchar("profileImage").bindTo { it.profileImage }
+    val lastMessage = varchar("lastMessage").bindTo { it.lastMessage }
+    val authToken = varchar("authToken").bindTo { it.authToken }
 }
 
-fun initDB() {
-
-    Database.connect("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1", driver = "org.h2.Driver", user = "root", password = "")
-
-    transaction {
-        addLogger(StdOutSqlLogger)
-
-        SchemaUtils.create(User)
-
-        User.insert {
-            it[userId] = 1
-            it[name] = "Andrey"
-            it[email] = "city"
-        }
-
-        User.insert {
-            it[userId] = 2
-            it[name] = "Sergey"
-            it[email] = "city"
-        }
-
-        User.insert {
-            it[userId] = 3
-            it[name] = "Eugene"
-            it[email] = "city"
-        }
-
-        User.insert {
-            it[userId] = 4
-            it[name] = "Alex"
-            it[email] = "city"
-        }
-
-        User.insert {
-            it[userId] = 5
-            it[name] = "Something"
-            it[email] = "city"
-        }
-    }
+interface UserEntity : Entity<UserEntity> {
+    companion object: Entity.Factory<UserEntity>()
+    val userId : String
+    val name : String
+    val email : String
+    val bio : String
+    val phoneNumber : String
+    val lastActive : String
+    val isOldUser : Boolean
+    val isOnline : Boolean
+    val profileImage : String
+    val lastMessage : String
+    val authToken: String
 }
+
