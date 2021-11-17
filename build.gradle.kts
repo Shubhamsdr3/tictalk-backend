@@ -27,16 +27,15 @@ repositories {
     jcenter()
 }
 
-
-//appengine {
-//    stage {
-//        artifact = "build/libs/${project.name}-${project.version}-all.jar"
-//    }
-//    deploy {
-//        version = "GCLOUD_CONFIG"
-//        projectId = "GCLOUD_CONFIG"
-//    }
-//}
+appengine {
+    stage {
+        setArtifact("build/libs/${project.name}-${project.version}-all.jar")
+    }
+    deploy {
+        version = "GCLOUD_CONFIG"
+        projectId = "GCLOUD_CONFIG"
+    }
+}
 
 dependencies {
     implementation("io.ktor:ktor-server-core:$ktor_version")
