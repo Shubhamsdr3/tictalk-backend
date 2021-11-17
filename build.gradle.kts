@@ -6,6 +6,8 @@ plugins {
     application
     kotlin("jvm") version "1.5.31"
     kotlin("plugin.serialization") version("1.4.10")
+    id("com.github.johnrengelman.shadow") version "6.1.0"
+    id("com.google.cloud.tools.appengine") version "2.4.2"
 }
 
 application {
@@ -22,6 +24,17 @@ repositories {
     mavenCentral()
     jcenter()
 }
+
+
+//appengine {
+//    stage {
+//        artifact = "build/libs/${project.name}-${project.version}-all.jar"
+//    }
+//    deploy {
+//        version = "GCLOUD_CONFIG"
+//        projectId = "GCLOUD_CONFIG"
+//    }
+//}
 
 dependencies {
     implementation("io.ktor:ktor-server-core:$ktor_version")
