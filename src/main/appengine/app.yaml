@@ -1,6 +1,7 @@
 runtime: java11
 #entrypoint: 'java -jar google-appengine-standard-1.0-SNAPSHOT-all.jar'
 instance_class: F2
+env: flex
 handlers:
   - url: /stylesheets
     static_dir: stylesheets

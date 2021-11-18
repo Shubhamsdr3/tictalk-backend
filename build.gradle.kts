@@ -2,7 +2,7 @@ val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
 
-project.setProperty("mainClassName", "com.pandey.shubham.Application")
+project.setProperty("mainClassName", "com.pandey.shubham.ApplicationKt")
 
 plugins {
     application
@@ -12,12 +12,12 @@ plugins {
     id("com.google.cloud.tools.appengine") version "2.4.2"
 }
 
-application {
-    mainClass.set("io.ktor.server.netty.EngineMain")
-}
+//application {
+//    mainClass.set("io.ktor.server.netty.EngineMain")
+//}
 
 application {
-    mainClass.set("com.pandey.shubham.Application")
+    mainClass.set("com.pandey.shubham.ApplicationKt")
 }
 
 group = "com.pandey.shubham"
