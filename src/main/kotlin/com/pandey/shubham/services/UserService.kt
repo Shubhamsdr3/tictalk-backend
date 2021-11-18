@@ -4,7 +4,6 @@ import com.google.gson.Gson
 import com.pandey.shubham.auth.JwtConfig
 import com.pandey.shubham.auth.LoginRequest
 import com.pandey.shubham.data.*
-import com.pandey.shubham.jwtConfig
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.http.*
