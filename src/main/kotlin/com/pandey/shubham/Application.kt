@@ -51,6 +51,7 @@ import kotlinx.serialization.json.Json
 fun main(args: Array<String>): Unit = EngineMain.main(args)
 
 fun Application.module(testing: Boolean = false) {
+    install(CallLogging)
     routing {
         get("/") {
             call.respondText("Hello, world!")
