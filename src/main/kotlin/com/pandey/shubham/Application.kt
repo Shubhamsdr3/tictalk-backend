@@ -17,7 +17,7 @@ val jwtConfig = JwtConfig("2E3F09EA56DDD11318E367BB820B5693552298F853E3D32756F50
 
 fun main() {
     val server = embeddedServer(Netty, port = 8888) {
-        DatabaseFactory.initDb()
+//        DatabaseFactory.initDb()
         install(DefaultHeaders)
         install(CallLogging)
         install(ContentNegotiation) {

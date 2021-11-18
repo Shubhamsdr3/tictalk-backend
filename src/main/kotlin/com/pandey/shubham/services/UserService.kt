@@ -18,6 +18,9 @@ object UserService {
 
     fun Route.userRouting() {
         route("api") {
+            get {
+                call.respond("Hey, There Shubham this side.")
+            }
             post("/user") {
                 val user = call.receive<UserDto>()
                 call.respondText(Gson().toJson(userRepository.addUser(user)), ContentType.Application.Json, HttpStatusCode.Created)
