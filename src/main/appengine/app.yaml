@@ -9,9 +9,9 @@ handlers:
     redirect_http_response_code: 301
     script: auto
 
-error_handlers:
-  - error_code: timeout
-  - file: index.html
+#error_handlers:
+#  - error_code: timeout
+#  - file: index.html
 
 inbound_services:
   - warmup
