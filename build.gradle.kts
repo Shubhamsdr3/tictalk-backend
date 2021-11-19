@@ -5,6 +5,8 @@ val logback_version: String by project
 plugins {
     application
     kotlin("jvm") version "1.5.31"
+    id("com.github.johnrengelman.shadow") version "6.0.0"
+    id("com.google.cloud.tools.appengine") version "2.4.2"
 }
 
 group = "com.example"
@@ -16,6 +18,17 @@ application {
 repositories {
     mavenCentral()
 }
+
+appengine {
+    stage {
+        setArtifact("build/libs/${project.name}-${project.version}-all.jar")
+    }
+    deploy {
+        version = "GCLOUD_CONFIG"
+        projectId = "GCLOUD_CONFIG"
+    }
+}
+
 
 dependencies {
     implementation("io.ktor:ktor-server-core:$ktor_version")
