@@ -9,17 +9,6 @@ mainClassName = "io.ktor.server.netty.EngineMain"
 group = "com.pandey.shubham"
 version '1.0-SNAPSHOT'
 
-//plugins {
-//    application
-//    kotlin("jvm")
-//    id("com.github.johnrengelman.shadow") version "6.0.0"
-//    id("com.google.cloud.tools.appengine") version "2.4.2"
-//}
-
-//application {
-//    mainClass.set("com.pandey.shubham.ApplicationKt")
-//}
-
 repositories {
     mavenCentral()
     maven { url "https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven" }
@@ -35,6 +24,11 @@ appengine {
     }
 }
 
+shadowJar {
+    manifest {
+        attributes 'Main-Class': 'io.ktor.server.netty.EngineMain'
+    }
+}
 
 dependencies {
     implementation("io.ktor:ktor-server-core:$ktor_version")
