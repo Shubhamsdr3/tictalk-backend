@@ -1,5 +1,3 @@
-rootProject.name = "com.pandey.shubham.tictalk"
-
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -13,3 +11,5 @@ pluginManagement {
         }
     }
 }
+
+
