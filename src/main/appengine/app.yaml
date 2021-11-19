@@ -11,6 +11,7 @@ handlers:
 
 error_handlers:
   - error_code: timeout
+  - file: index.html
 
 inbound_services:
   - warmup
