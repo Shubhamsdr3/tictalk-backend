@@ -39,3 +39,38 @@ fun main() {
     }
     server.start(wait = true)
 }
+
+fun Application.module() {
+//    DatabaseFactory.init()
+    install(ContentNegotiation) {
+        json()
+    }
+    routing {
+        get {
+           call.respond("Hello, how are you ?")
+        }
+    }
+}
+
+
+//fun main(args: Array<String>): Unit = EngineMain.main(args)
+//
+//fun Application.module(testing: Boolean = false) {
+//    install(CallLogging)
+//    install(DefaultHeaders)
+//    install(ContentNegotiation) {
+//        json(Json {
+//            prettyPrint = true
+//            isLenient = true
+//            ignoreUnknownKeys = true
+//        })
+//    }
+//    install(Authentication) {
+//        jwt {
+//            jwtConfig.configureKtorFeature(this)
+//        }
+//    }
+//    routing {
+//        userRouting()
+//    }
+//}
