@@ -2,6 +2,8 @@ val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
 
+project.setProperty("mainClassName", "com.pandey.shubham.ApplicationKt")
+
 plugins {
     application
     kotlin("jvm") version "1.5.31"
@@ -9,14 +11,15 @@ plugins {
     id("com.google.cloud.tools.appengine") version "2.4.2"
 }
 
-group = "com.example"
-version = "0.0.1"
+group = "com.pandey.shubham"
+version = "1.0-SNAPSHOT"
 application {
-    mainClass.set("com.example.ApplicationKt")
+    mainClass.set("com.pandey.shubham.ApplicationKt")
 }
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 appengine {
