@@ -28,7 +28,6 @@ object DatabaseFactory {
 
     private fun hikari(): HikariDataSource {
         return HikariDataSource(HikariConfig().apply {
-            driverClassName = "org.h2.Driver"
             jdbcUrl = String.format("jdbc:mysql:///%s", DATABASE)
             username = "admin-shubham"
             password = "tictalk@db5678"
