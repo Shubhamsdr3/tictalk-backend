@@ -5,18 +5,24 @@ import com.zaxxer.hikari.HikariDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.ktorm.database.Database
 
 object DatabaseFactory {
 
     private const val HOST = "jdbc:mysql://localhost:3306"
     private const val DATABASE = "tictalk"
-    private const val PASSWORD = ""
-    lateinit var database: org.ktorm.database.Database
+    private const val PASSWORD = "tictalk@db5678"
+    lateinit var database: Database
 
    fun initDb() {
        val url = "jdbc:mysql://localhost:3306/$DATABASE?user=root&password=$PASSWORD&useSSL=false&jdbcCompliantTruncation=false"
-       database = org.ktorm.database.Database.connect(url)
+       database = Database.connect(url)
    }
+
+    fun initProdDb() {
+        val url = "jdbc:mysql://tictalk-app:asia-south2:tictalk-app-prod:3306/$DATABASE?user=root&password=$PASSWORD&useSSL=false&jdbcCompliantTruncation=false"
+        database = Database.connect(url)
+    }
 
     fun init() {
 //        Database.connect(hikari())

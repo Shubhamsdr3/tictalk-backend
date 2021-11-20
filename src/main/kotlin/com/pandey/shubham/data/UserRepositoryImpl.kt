@@ -2,6 +2,7 @@ package com.pandey.shubham.data
 
 import com.pandey.shubham.auth.JwtConfig
 import com.pandey.shubham.db.DatabaseFactory
+import com.pandey.shubham.jwtConfig
 import org.ktorm.dsl.*
 import org.ktorm.entity.firstOrNull
 import org.ktorm.entity.sequenceOf
@@ -10,8 +11,8 @@ import org.ktorm.entity.toList
 class UserRepositoryImpl: UserRepository {
 
     override suspend fun addUser(userDto: UserDto): UserDto {
-//        val authToken = jwtConfig.generateToken(user = JwtConfig.JwtUser(userDto.name, userDto.phoneNumber))
-//        userDto.authToken = authToken
+        val authToken = jwtConfig.generateToken(user = JwtConfig.JwtUser(userDto.name, userDto.phoneNumber))
+        userDto.authToken = authToken
         DatabaseFactory.database.insert(User) {
             set(it.userId, userDto.userId)
             set(it.name, userDto.name)
@@ -23,7 +24,7 @@ class UserRepositoryImpl: UserRepository {
             set(it.isOnline, userDto.isOnline)
             set(it.profileImage, userDto.profileImage)
             set(it.lastMessage, userDto.lastMessage)
-//            set(it.authToken, authToken)
+            set(it.authToken, authToken)
         }
         return userDto
     }
