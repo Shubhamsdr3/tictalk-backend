@@ -21,7 +21,6 @@ fun main(args: Array<String>): Unit = EngineMain.main(args)
 fun Application.module(testing: Boolean = false) {
     install(CallLogging)
     install(DefaultHeaders)
-    DatabaseFactory.initProdDb()
     install(ContentNegotiation) {
         json(Json {
             prettyPrint = true
