@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "tictalk-app",
+  "private_key_id": "fe7a168fa9f3bf8083b7e36448c1a60dc154d1e6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQDfuv1yHuTXU5YV\nkdUYtWdaqBShAbv6YF8sXyFgwGlTH2yKiPmHAELO5ydDqYtzfLd0yFj/1FLrlet1\n5cT5DuI2FAO3DqKzF2ceVLdbZIMdGUDYibKWuwb+88MRd9/Ez8UvwuUwPP47AaXK\n11zAw/0DmfOdSIHFavmGxd/djew54991/hLJ2ZYdO0qDT0quTWxg+DLBHcH9wPZO\nEzpHYVg+UvWoOxN6ViLCA15vZ02Ort/JlPMgg+WtSY1OdhRjtBNqSgfdpQK8zb6a\nLiByC9C6XPlmvS9DvHSVxVgXWW9IM5FRU2u+AsFBgmQeRttS9aEj3S+ocAMAgan/\nX549WxHfAgMBAAECggEADC8RuFJIYhWSOdB8S2EtpLk8jlwa0ZLH/BGeLrerxLQU\nZCL7e8ee28eo0r1786kaEIkMl7oHXf8HGJ+Pr4SI+yrx3Nk2MQyYOAWjCp4Zqc8D\nQgeVqzG6Os4plFzz2bL66RPzCUJ5EduQHNDHo1PJBpYutyUItCiUOCu0ektNTwWo\nx7D3vWLKMi3F22o56TKKn8A4wrGvwWsJF4IHn5E4P1Nrt0enblot6kwufGljQ5NA\nE3l4B3NfsW7P8+XQ6DHCALTF4e0MW3/eBITIZkC49Leqk58vrDqS9naSw3DzG2B0\nJ1Cbbo5KnlUwIYb7S/9GUdJLgi7H6a5VZjG2Ia2uGQKBgQDwJumEhe19XQ0MUChJ\nXYP6ECg1fR8YQVaYECpJxKkcZ2+Rv345plnn5j/baM+MhzNsR9LoW7NEOMgkMu6d\nUZFvkzcUnA2osPI5x86JdRiCtMkU4gM0UL6ynqzVGvyUmBdVym3mqIgPEayHAdyN\nun/OJim8BdUsv3AMSRMptFrjqwKBgQDufqeRnHgkKGefmBGbSXAoMumhrIsTYo3o\ntgwBZVJ2wuZUAb6X1k78WTXc7luGbfIdmHT4IAZqvWrcLmkQ7aY/h6+1BGlab/mJ\nPcQEFcKDpLMAeNYmB0XU08RJK94kVHjwlkOAsl61lcafu0lSC1QpIWC5iVXmErbf\nl85VKWZWnQKBgAtMGVIlpr1uAi4hGzQQVSQPXITfpPXUJQm0QPkFalsutn3pvzth\nCvuwxjJBJPpcZdvjKRXLMoy0Cx5A0x7NdoUELOQoTzAvWsXDE4E94/BKJud3lmUA\no2fttP21bkpjOT3M7wyZwwTKdQ5I1SJJsrd07iOtNpELVG8PhPpCRMBPAoGBAOC4\nhrw1ax7m030VlMF1WTEHiAzGv+TsIDr+DiHijulIjC7r1eLMFHDCvnYGQkdQoaox\nVUXXJzS8dkwxjt5cjyGdgHpYRczpZX9jq6cNudLBBcmUEnSStcHsKC+qHg6taaeI\nbuJ9L7B6CEXJ+zRLaGm5AaLRPRck2xujts+Xys4hAn9GLnokUcMTCMMHShTmrVdV\nxzO9bb3J3Ws/EWk7saNK0bFbxrxvQ8JsyfGCNoO28Bs+lm2OjGw6/I3mjcQB8wec\nb/Ych2oZA2U0VgIgLHT7F06uMXUDTu0rdwdlcVE1ufP7ts0kXc2G6MJRwC6TPtdE\nSrDS+2QIxHnKi8maormv\n-----END PRIVATE KEY-----\n",
+  "client_email": "tictalk-app@appspot.gserviceaccount.com",
+  "client_id": "102179685622051420213",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tictalk-app%40appspot.gserviceaccount.com"
+}
