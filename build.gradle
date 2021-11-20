@@ -8,7 +8,7 @@ plugins {
 
 mainClassName = "com.pandey.shubham.ApplicationKt"
 group = "com.pandey.shubham"
-version '1.1-SNAPSHOT'
+version '1.2-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -19,7 +19,6 @@ repositories {
 appengine {
     stage {
         artifact "build/libs/${project.name}-${project.version}-all.jar"
-        setAppEngineDirectory("appengine")
     }
     deploy {
         version = "GCLOUD_CONFIG"
