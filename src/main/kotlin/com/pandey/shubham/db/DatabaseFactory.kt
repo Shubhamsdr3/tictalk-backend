@@ -1,11 +1,9 @@
 package com.pandey.shubham.db
 
-import com.pandey.shubham.data.User
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.ktorm.database.Database
 
@@ -35,7 +33,7 @@ object DatabaseFactory {
             addDataSourceProperty("cloudSqlInstance", "tictalk-app:asia-south2:tictalk-app-prod")
             addDataSourceProperty("ipTypes", "PUBLIC,PRIVATE");
             maximumPoolSize = 3
-            isAutoCommit = false
+            isAutoCommit = true
             transactionIsolation = "TRANSACTION_REPEATABLE_READ"
             validate()
         })

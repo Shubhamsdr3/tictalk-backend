@@ -1,16 +1,13 @@
 package com.pandey.shubham
 
 import com.pandey.shubham.auth.JwtConfig
-import com.pandey.shubham.db.DatabaseFactory
 import com.pandey.shubham.services.UserService.userRouting
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.auth.jwt.*
 import io.ktor.features.*
-import io.ktor.response.*
 import io.ktor.routing.*
 import io.ktor.serialization.*
-import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import kotlinx.serialization.json.Json
 
