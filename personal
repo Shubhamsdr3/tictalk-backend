@@ -1,0 +1,17 @@
+git SSH PAS: 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
+
+
+cloud sql:
+	instance Id: tictalk-app-prod
+	password: tictalk@db5678
+	connection name: tictalk-app:asia-south2:tictalk-app-prod
+	public ip address: 34.131.118.252
+	user: admin-shubham
+	pass: tictalk@db5678
+
+
+Google cloud command:
+	1. checking log -> gcloud app logs tail
+	2. deploy: gcloud app deploy
+	3. build JAR: ./gradlew clean shadowJar
+	4. Connect to prod db on terminal: connect to prod-db: gcloud sql connect tictalk-app-prod --user=admin-shubham

@@ -1,16 +1,18 @@
 plugins {
-    id 'com.google.cloud.tools.appengine' version '2.4.2'
-    id 'com.github.johnrengelman.shadow' version '6.0.0'
-    id 'org.jetbrains.kotlin.jvm' version "1.5.31"
     id 'application'
+    id 'org.jetbrains.kotlin.jvm' version "1.5.31"
+    id 'org.jetbrains.kotlin.plugin.serialization' version "1.4.10"
+    id("com.github.johnrengelman.shadow") version "6.1.0"
+    id("com.google.cloud.tools.appengine") version "2.4.2"
 }
 
-mainClassName = "io.ktor.server.netty.EngineMain"
+mainClassName = "com.pandey.shubham.ApplicationKt"
 group = "com.pandey.shubham"
-version '1.1-SNAPSHOT'
+version '1.2-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    jcenter()
     maven { url "https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven" }
 }
 
@@ -20,13 +22,15 @@ appengine {
     }
     deploy {
         version = "GCLOUD_CONFIG"
-        projectId = "GCLOUD_CONFIG"
+        projectId = "ticktalk-app"
+        stopPreviousVersion = true
+        promote = true
     }
 }
 
 shadowJar {
     manifest {
-        attributes 'Main-Class': 'io.ktor.server.netty.EngineMain'
+        attributes 'Main-Class': 'com.pandey.shubham.ApplicationKt'
     }
 }
 
@@ -37,4 +41,20 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:$logback_version")
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlin_version")
+    implementation( "io.ktor:ktor-serialization:$ktor_version")
+
+    implementation( "org.jetbrains.exposed:exposed:0.17.6")
+    implementation("com.zaxxer:HikariCP:3.4.2")
+    implementation("mysql:mysql-connector-java:8.0.11")
+    implementation("org.ktorm:ktorm-core:3.2.0")
+    implementation("org.ktorm:ktorm-support-mysql:3.2.0")
+    implementation( "org.slf4j:slf4j-simple:1.7.25")
+    implementation("com.google.code.gson:gson:2.8.1")
+//    implementation(kotlin("stdlib"))
+
+    //auth
+    implementation("io.ktor:ktor-auth:$ktor_version")
+    implementation("io.ktor:ktor-auth-jwt:$ktor_version")
+    implementation ("com.auth0:java-jwt:3.18.1")
+    implementation("com.google.cloud.sql:mysql-socket-factory-connector-j-8:1.2.2")
 }

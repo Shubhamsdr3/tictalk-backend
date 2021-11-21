@@ -3,6 +3,7 @@ pluginManagement {
         gradlePluginPortal()
         mavenCentral()
     }
+
     resolutionStrategy {
         eachPlugin {
             if (requested.id.id.startsWith("com.google.cloud.tools.appengine")) {
@@ -12,4 +13,4 @@ pluginManagement {
     }
 }
 
-
+rootProject.name = "com.pandey.shubham.tictalk"
