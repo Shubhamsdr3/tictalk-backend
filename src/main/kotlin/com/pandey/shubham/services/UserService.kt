@@ -24,7 +24,7 @@ object UserService {
                 val user = call.receive<UserDto>()
                 call.respondText(Gson().toJson(userRepository.addUser(user)), ContentType.Application.Json, HttpStatusCode.Created)
             }
-            authenticate {
+//            authenticate {
                 get("/user/me") {
                     val user = call.authentication.principal as JwtConfig.JwtUser
                     call.respondText(Gson().toJson(user.toString()),ContentType.Application.Json)
@@ -44,7 +44,7 @@ object UserService {
                     val user = call.receive<UserDto>()
                     call.respondText(Gson().toJson(userRepository.updateUser(user)), ContentType.Application.Json)
                 }
-            }
+//            }
         }
     }
 }

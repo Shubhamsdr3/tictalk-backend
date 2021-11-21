@@ -5,34 +5,35 @@ import com.zaxxer.hikari.HikariDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.ktorm.database.Database
 
 object DatabaseFactory {
 
     private const val HOST = "jdbc:mysql://localhost:3306"
     private const val DATABASE = "tictalk"
     private const val PASSWORD = ""
-    lateinit var database: org.ktorm.database.Database
+    val database: Database by lazy { Database.connect(hikari()) }
 
-   fun initDb() {
+   fun initDb(): Database {
        val url = "jdbc:mysql://localhost:3306/$DATABASE?user=root&password=$PASSWORD&useSSL=false&jdbcCompliantTruncation=false"
-       database = org.ktorm.database.Database.connect(url)
+       return Database.connect(url)
    }
 
-    fun init() {
-//        Database.connect(hikari())
-//        transaction {
-//            SchemaUtils.create(User)
-//        }
-    }
+   fun initProdDb(): Database {
+       val url = "jdbc:mysql:///$DATABASE?cloudSqlInstance=tictalk-app:asia-south2:tictalk-app-prod&socketFactory=com.google.cloud.sql.mysql.SocketFactory&user=admin-shubham&password=tictalk@db5678"
+       return Database.connect(url)
+   }
 
     private fun hikari(): HikariDataSource {
         return HikariDataSource(HikariConfig().apply {
-            driverClassName = "org.h2.Driver"
-            jdbcUrl = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"
-            username = "root"
-            password = ""
+            jdbcUrl = String.format("jdbc:mysql:///%s", DATABASE)
+            username = "admin-shubham"
+            password = "tictalk@db5678"
+            addDataSourceProperty("socketFactory", "com.google.cloud.sql.mysql.SocketFactory")
+            addDataSourceProperty("cloudSqlInstance", "tictalk-app:asia-south2:tictalk-app-prod")
+            addDataSourceProperty("ipTypes", "PUBLIC,PRIVATE");
             maximumPoolSize = 3
-            isAutoCommit = false
+            isAutoCommit = true
             transactionIsolation = "TRANSACTION_REPEATABLE_READ"
             validate()
         })
