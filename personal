@@ -1,6 +1,4 @@
 git SSH PAS: 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
-
-
 cloud sql:
 	instance Id: tictalk-app-prod
 	password: tictalk@db5678
@@ -9,9 +7,12 @@ cloud sql:
 	user: admin-shubham
 	pass: tictalk@db5678
 
-
 Google cloud command:
 	1. checking log -> gcloud app logs tail
 	2. deploy: gcloud app deploy
 	3. build JAR: ./gradlew clean shadowJar
-	4. Connect to prod db on terminal: connect to prod-db: gcloud sql connect tictalk-app-prod --user=admin-shubham
+	4. Connect to prod db on terminal:gcloud sql connect tictalk-app-prod --user=admin-shubham
+
+#TODOs:
+	1. remove private files form repo.
+	2. 
