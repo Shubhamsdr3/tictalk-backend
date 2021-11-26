@@ -52,9 +52,15 @@ dependencies {
     implementation("com.google.code.gson:gson:2.8.1")
 //    implementation(kotlin("stdlib"))
 
+    // routing
+    implementation("io.ktor:ktor-locations:$ktor_version")
+
     //auth
     implementation("io.ktor:ktor-auth:$ktor_version")
     implementation("io.ktor:ktor-auth-jwt:$ktor_version")
     implementation ("com.auth0:java-jwt:3.18.1")
     implementation("com.google.cloud.sql:mysql-socket-factory-connector-j-8:1.2.2")
+
+    // twilio
+    implementation "com.twilio.sdk:twilio:7.14.5"
 }

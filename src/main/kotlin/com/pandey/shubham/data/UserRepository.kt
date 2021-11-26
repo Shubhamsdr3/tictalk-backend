@@ -15,4 +15,6 @@ interface UserRepository {
     suspend fun getUserByPhone(phoneNumber: String): UserDto?
 
     suspend fun getReferrerByUserId(userId: String): List<String>
+
+    suspend fun getUserProfile(userId: String): UserInfoResponse?
 }

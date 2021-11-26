@@ -12,15 +12,10 @@ object DatabaseFactory {
     private const val HOST = "jdbc:mysql://localhost:3306"
     private const val DATABASE = "tictalk"
     private const val PASSWORD = ""
-    val database: Database by lazy { Database.connect(hikari()) }
+    val database: Database by lazy { initDb() }
 
    fun initDb(): Database {
        val url = "jdbc:mysql://localhost:3306/$DATABASE?user=root&password=$PASSWORD&useSSL=false&jdbcCompliantTruncation=false"
-       return Database.connect(url)
-   }
-
-   fun initProdDb(): Database {
-       val url = "jdbc:mysql:///$DATABASE?cloudSqlInstance=tictalk-app:asia-south2:tictalk-app-prod&socketFactory=com.google.cloud.sql.mysql.SocketFactory&user=admin-shubham&password=tictalk@db5678"
        return Database.connect(url)
    }
 

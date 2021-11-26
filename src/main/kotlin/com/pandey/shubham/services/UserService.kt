@@ -29,7 +29,7 @@ object UserService {
                     val user = call.authentication.principal as JwtConfig.JwtUser
                     call.respondText(Gson().toJson(user.toString()),ContentType.Application.Json)
                 }
-                get("/user") {
+                get("/users") {
                     call.respondText(Gson().toJson(userRepository.getAllUsers()), ContentType.Application.Json)
                 }
                 get("/user/{id}") {
@@ -43,6 +43,10 @@ object UserService {
                 put("/user/update") {
                     val user = call.receive<UserDto>()
                     call.respondText(Gson().toJson(userRepository.updateUser(user)), ContentType.Application.Json)
+                }
+                get("/user/{id}/profile") {
+                    val userId = call.parameters["id"] ?: return@get call.respond(HttpStatusCode.BadRequest)
+                    call.respondText(Gson().toJson(userRepository.getUserProfile(userId)), ContentType.Application.Json)
                 }
 //            }
         }

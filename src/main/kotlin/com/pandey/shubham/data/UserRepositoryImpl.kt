@@ -90,9 +90,7 @@ class UserRepositoryImpl: UserRepository {
     }
 
     override suspend fun getUserByPhone(phoneNumber: String): UserDto? {
-        val userEntity = DatabaseFactory.database.sequenceOf(User).firstOrNull {
-            it.phoneNumber eq phoneNumber
-        }
+        val userEntity = DatabaseFactory.database.sequenceOf(User).firstOrNull { it.phoneNumber eq phoneNumber }
         return rowToUser(userEntity)
     }
 
@@ -101,6 +99,47 @@ class UserRepositoryImpl: UserRepository {
         val referrerList = mutableListOf<String>()
         query.map { row -> row[Referrer.referrerId]?.let { it -> referrerList.add(it) } }
         return referrerList
+    }
+
+    override suspend fun getUserProfile(userId: String): UserInfoResponse? {
+        val userEntity = DatabaseFactory.database.sequenceOf(User).firstOrNull { it.userId eq userId }
+        return rowToUserProfile(userEntity)
+    }
+
+    private fun rowToUserProfile(row: UserEntity?): UserInfoResponse? {
+        if (row == null) { return null }
+        val userInfoList = mutableListOf<UserInfoItem>()
+        userInfoList.add(
+            UserInfoItem(
+                title = "Name",
+                subtitle = row.name,
+                image = null,
+                description = "This is not your username or pin, This name will be visible in your contacts.",
+                isEditable = true,
+                position = 0
+        ))
+        userInfoList.add(
+            UserInfoItem(
+                title = "About",
+                subtitle = row.bio,
+                image = null,
+                description = null,
+                isEditable = true,
+                position = 1
+            ))
+        userInfoList.add(
+            UserInfoItem(
+                title = "Phone",
+                subtitle = row.phoneNumber,
+                image = null,
+                description = null,
+                isEditable = false,
+                position = 2
+            ))
+        return UserInfoResponse(
+            profileImage = "https://www.whatsappimages.in/wp-content/uploads/2021/01/Boys-Feeling-Very-Sad-Images-Pics-Downlaod.jpg",
+            userInfoList
+        )
     }
 
     private fun rowToUser(row: UserEntity?): UserDto? {
