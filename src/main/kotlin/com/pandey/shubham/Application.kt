@@ -8,7 +8,9 @@ import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.auth.jwt.*
 import io.ktor.features.*
+import io.ktor.http.*
 import io.ktor.locations.*
+import io.ktor.response.*
 import io.ktor.routing.*
 import io.ktor.serialization.*
 import io.ktor.server.netty.*
@@ -27,8 +29,6 @@ private const val AUTH_TOKEN = "88a2f9da18c17b964c1f070525c2bd3f"
 fun Application.module(testing: Boolean = false) {
     val env = environment.config.propertyOrNull("ktor.development")?.getString()
     print("The dev mode is : $env")
-
-
     install(CallLogging)
     install(DefaultHeaders)
     install(Locations)
@@ -42,6 +42,11 @@ fun Application.module(testing: Boolean = false) {
     install(Authentication) {
         jwt {
             jwtConfig.configureKtorFeature(this)
+        }
+    }
+    install(StatusPages) {
+        exception<Throwable> { e ->
+            call.respondText(e.localizedMessage, ContentType.Text.Plain, HttpStatusCode.InternalServerError)
         }
     }
     install(Routing) {

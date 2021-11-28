@@ -63,4 +63,8 @@ dependencies {
 
     // twilio
     implementation "com.twilio.sdk:twilio:7.14.5"
+
+    //cloud storage
+    implementation platform('com.google.cloud:libraries-bom:23.0.0')
+    implementation 'com.google.cloud:google-cloud-storage'
 }

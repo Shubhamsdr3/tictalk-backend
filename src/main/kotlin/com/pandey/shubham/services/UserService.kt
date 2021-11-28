@@ -2,8 +2,10 @@ package com.pandey.shubham.services
 
 import com.google.gson.Gson
 import com.pandey.shubham.auth.JwtConfig
-import com.pandey.shubham.auth.LoginRequest
-import com.pandey.shubham.data.*
+import com.pandey.shubham.data.ResponseDto
+import com.pandey.shubham.data.UserDto
+import com.pandey.shubham.data.UserRepositoryImpl
+import com.pandey.shubham.util.Constants
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.http.*
@@ -18,35 +20,42 @@ object UserService {
     fun Route.userRouting() {
         route("api") {
             get {
-                call.respond("Hey, There Shubham this side.")
+                call.respond(ResponseDto(HttpStatusCode.OK, Constants.SUCCESS, "Hey, There Shubham this side."))
             }
             post("/user") {
                 val user = call.receive<UserDto>()
-                call.respondText(Gson().toJson(userRepository.addUser(user)), ContentType.Application.Json, HttpStatusCode.Created)
+                val responseDto = ResponseDto(HttpStatusCode.Created, Constants.SUCCESS, userRepository.addUser(user))
+                call.respondText(Gson().toJson(responseDto), ContentType.Application.Json)
             }
 //            authenticate {
                 get("/user/me") {
                     val user = call.authentication.principal as JwtConfig.JwtUser
-                    call.respondText(Gson().toJson(user.toString()),ContentType.Application.Json)
+                    val responseDto = ResponseDto(HttpStatusCode.OK, Constants.SUCCESS, user)
+                    call.respondText(Gson().toJson(responseDto),ContentType.Application.Json)
                 }
                 get("/users") {
-                    call.respondText(Gson().toJson(userRepository.getAllUsers()), ContentType.Application.Json)
+                    val responseDto = ResponseDto(HttpStatusCode.OK, Constants.SUCCESS, userRepository.getAllUsers())
+                    call.respondText(Gson().toJson(responseDto), ContentType.Application.Json)
                 }
                 get("/user/{id}") {
-                    val userId = call.parameters["id"] ?: return@get call.respond(HttpStatusCode.NotFound)
-                    call.respondText(Gson().toJson(userRepository.getUserById(userId)), ContentType.Application.Json)
+                    val userId = call.parameters["id"] ?: return@get call.respond(ResponseDto(HttpStatusCode.NotFound, Constants.ERROR, null))
+                    val responseDto = ResponseDto(HttpStatusCode.OK, Constants.SUCCESS, userRepository.getUserById(userId))
+                    call.respondText(Gson().toJson(responseDto), ContentType.Application.Json)
                 }
                 delete("/user/{id}"){
-                    val userId = call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)
-                    call.respondText(Gson().toJson(userRepository.deleteUser(userId)), ContentType.Application.Json)
+                    val userId = call.parameters["id"] ?: return@delete call.respond(ResponseDto(HttpStatusCode.BadRequest, Constants.ERROR, null))
+                    val responseDto = ResponseDto(HttpStatusCode.OK, Constants.SUCCESS, userRepository.deleteUser(userId))
+                    call.respondText(Gson().toJson(responseDto), ContentType.Application.Json)
                 }
                 put("/user/update") {
                     val user = call.receive<UserDto>()
-                    call.respondText(Gson().toJson(userRepository.updateUser(user)), ContentType.Application.Json)
+                    val responseDto = ResponseDto(HttpStatusCode.OK, Constants.SUCCESS, userRepository.updateUser(user))
+                    call.respondText(Gson().toJson(responseDto), ContentType.Application.Json)
                 }
                 get("/user/{id}/profile") {
-                    val userId = call.parameters["id"] ?: return@get call.respond(HttpStatusCode.BadRequest)
-                    call.respondText(Gson().toJson(userRepository.getUserProfile(userId)), ContentType.Application.Json)
+                    val userId = call.parameters["id"] ?: return@get call.respond(ResponseDto(HttpStatusCode.BadRequest, Constants.ERROR, null))
+                    val responseDto = ResponseDto(HttpStatusCode.OK, Constants.SUCCESS, userRepository.getUserProfile(userId))
+                    call.respondText(Gson().toJson(responseDto), ContentType.Application.Json)
                 }
 //            }
         }

@@ -12,6 +12,7 @@ object DatabaseFactory {
     private const val HOST = "jdbc:mysql://localhost:3306"
     private const val DATABASE = "tictalk"
     private const val PASSWORD = ""
+//    val database: Database by lazy { Database.connect(hikari()) }
     val database: Database by lazy { initDb() }
 
    fun initDb(): Database {
