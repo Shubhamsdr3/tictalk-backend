@@ -57,6 +57,12 @@ object UserService {
                     val responseDto = ResponseDto(HttpStatusCode.OK, Constants.SUCCESS, userRepository.getUserProfile(userId))
                     call.respondText(Gson().toJson(responseDto), ContentType.Application.Json)
                 }
+
+                get("/user/{id}/friends") {
+                    val userId = call.parameters["id"] ?: return@get call.respond(ResponseDto(HttpStatusCode.NotFound, Constants.ERROR, null))
+                    val responseDto = ResponseDto(HttpStatusCode.OK, Constants.SUCCESS, userRepository.getAllFriends(userId))
+                    call.respondText(Gson().toJson(responseDto), ContentType.Application.Json)
+                }
 //            }
         }
     }

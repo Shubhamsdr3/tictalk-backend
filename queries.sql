@@ -1,5 +1,5 @@
 create table user ( 
-	userId varchar(255), 
+	userId varchar(255) NOT NULL,
 	name varchar(255), 
 	email varchar(255),
 	bio varchar(255),
@@ -9,7 +9,8 @@ create table user (
 	isOnline boolean,
 	profileImage varchar(255),
 	lastMessage varchar(255),
-	referrerId varchar(255)
+	referrerId varchar(255),
+	PRIMARY KEY (userId)
 );
 
 
