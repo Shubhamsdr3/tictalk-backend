@@ -1,7 +1,7 @@
 plugins {
     id 'application'
     id 'org.jetbrains.kotlin.jvm' version "1.5.31"
-    id 'org.jetbrains.kotlin.plugin.serialization' version "1.4.10"
+    id 'org.jetbrains.kotlin.plugin.serialization' version("$kotlin_version")
     id("com.github.johnrengelman.shadow") version "6.1.0"
     id("com.google.cloud.tools.appengine") version "2.4.2"
 }
