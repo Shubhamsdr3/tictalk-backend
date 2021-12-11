@@ -15,19 +15,18 @@ import io.ktor.routing.*
 
 object UserService {
 
-    private val userRepository = UserRepositoryImpl()
-
-    fun Route.userRouting() {
+    fun Route.userRouting(jwtConfig: JwtConfig) {
+        val userRepository = UserRepositoryImpl(jwtConfig)
         route("api") {
             get {
                 call.respond(ResponseDto(HttpStatusCode.OK, Constants.SUCCESS, "Hey, There Shubham this side."))
             }
-            post("/user") {
+            post("/user/login") {
                 val user = call.receive<UserDto>()
                 val responseDto = ResponseDto(HttpStatusCode.Created, Constants.SUCCESS, userRepository.addUser(user))
                 call.respondText(Gson().toJson(responseDto), ContentType.Application.Json)
             }
-//            authenticate {
+            authenticate {
                 get("/user/me") {
                     val user = call.authentication.principal as JwtConfig.JwtUser
                     val responseDto = ResponseDto(HttpStatusCode.OK, Constants.SUCCESS, user)
@@ -63,7 +62,7 @@ object UserService {
                     val responseDto = ResponseDto(HttpStatusCode.OK, Constants.SUCCESS, userRepository.getAllFriends(userId))
                     call.respondText(Gson().toJson(responseDto), ContentType.Application.Json)
                 }
-//            }
+            }
         }
     }
 }

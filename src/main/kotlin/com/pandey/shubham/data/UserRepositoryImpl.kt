@@ -2,14 +2,13 @@ package com.pandey.shubham.data
 
 import com.pandey.shubham.auth.JwtConfig
 import com.pandey.shubham.db.DatabaseFactory
-import com.pandey.shubham.jwtConfig
 import com.pandey.shubham.util.getLogger
 import org.ktorm.dsl.*
 import org.ktorm.entity.firstOrNull
 import org.ktorm.entity.sequenceOf
 import org.ktorm.entity.toList
 
-class UserRepositoryImpl: UserRepository {
+class UserRepositoryImpl(private val jwtConfig: JwtConfig): UserRepository {
 
     private val logger = getLogger<UserRepositoryImpl>()
 

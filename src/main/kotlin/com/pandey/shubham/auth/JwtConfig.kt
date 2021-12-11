@@ -5,13 +5,14 @@ import com.auth0.jwt.JWTVerifier
 import com.auth0.jwt.algorithms.Algorithm
 import io.ktor.auth.*
 import io.ktor.auth.jwt.*
+import java.util.*
 
 class JwtConfig(jwtSecret: String) {
 
     companion object Constants {
         // jwt config
         private const val jwtIssuer = "com.shubham.pandey"
-        private const val jwtRealm = "com.maaxgr.todolist"
+        private const val jwtRealm = "com.pandey.shubham.todolist"
 
         // claims
         private const val CLAIM_USERID = "phoneNumber"

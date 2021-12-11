@@ -5,4 +5,4 @@ import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 
 @Serializable
-class ResponseDto<T>(@Contextual val status: HttpStatusCode, val message: String? = null, val data: T? = null)
+data class ResponseDto<T>(@Contextual val status: HttpStatusCode, val message: String? = null, val data: T? = null)
